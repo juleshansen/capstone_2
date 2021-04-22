@@ -1,5 +1,4 @@
 import cv2
-import sys
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cap = cv2.VideoCapture(0)
 while True:
@@ -10,6 +9,6 @@ while True:
         cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
     cv2.imshow('img', img)
     k = cv2.waitKey(30) & 0xff
-    if k==27:
+    if k == 27:
         break
 cap.release()
