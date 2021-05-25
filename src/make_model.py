@@ -3,11 +3,15 @@ import pandas as pd
 import tensorflow as tf
 
 archive = pd.read_csv('data/fer2013.csv')
-archive['image'] = archive['pixels'].apply(lambda x: np.array(x.split()).astype(float).reshape(48, 48))
+archive['image'] = archive['pixels'].apply(
+    lambda x: np.array(x.split()).astype(float).reshape(48, 48)
+    )
 
 x_train = np.stack(archive.image.to_numpy()).reshape(-1, 48, 48, 1)
 y_train = archive.emotion.to_numpy()
-# x_test = np.stack(archive.image[archive.Usage == 'PublicTest'].to_numpy()).reshape(-1, 48, 48, 1)/255
+# x_test = np.stack(
+#    archive.image[archive.Usage == 'PublicTest'].to_numpy()
+#    ).reshape(-1, 48, 48, 1)/255
 # y_test = archive.emotion[archive.Usage == 'PublicTest'].to_numpy()
 
 x_train_3channel = np.zeros((x_train.shape[0], 48, 48, 3))
