@@ -16,7 +16,7 @@ em_labels = np.array([
 face_cascade = cv2.CascadeClassifier(
     cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
 img = cv2.imread(sys.argv[1])
-faces = face_cascade.detectMultiScale(img, 1.1, 4)
+faces = face_cascade.detectMultiScale(img, 1.3, 4)
 for (x, y, w, h) in faces:
     face = img[y:y + h, x:x + w].copy()
     face = cv2.cvtColor(face, cv2.COLOR_BGR2GRAY)
